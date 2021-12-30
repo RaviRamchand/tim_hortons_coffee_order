@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tim Hortons</title>
+</head>
+<body>
+
+<h1>Welcome to Tim Hortons!</h1>
+
+<form method="post" th:action="@{/getOrder}" th:object="${order}">
+
+    <input type="number" th:name="quantity" th:field="*{quantity}" style="width:50px">
+
+    <select th:field="*{size}">
+        <option th:each="s:*{sizes}" th:value="${s}" th:text="${s}"></option>
+    </select> <br>
+
+    <input type="radio" th:name="orderType" th:value="regular" th:field="*{coffeeType}">Regular<br>
+    <input type="radio" th:name="orderType" th:value="double" th:field="*{coffeeType}">Double Double <br>
+    <input type="radio" th:name="orderType" th:value="triple" th:field="*{coffeeType}">Triple Triple <br>
+    <input type="radio" th:name="orderType" th:value="black" th:field="*{coffeeType}">Black <br>
+    <input type="radio" th:name="orderType" th:value="black1Sugar" th:field="*{coffeeType}">Black One Sugar <br>
+    <input type="radio" th:name="orderType" th:value="black2Sugar" th:field="*{coffeeType}">Black Two Sugar <br>
+    <input type="radio" th:name="orderType" th:value="black3Sugar" th:field="*{coffeeType}">Black Three Sugar <br><br>
+
+    <input type="submit" value="Place Order">
+</form>
+
+</body>
+</html>
