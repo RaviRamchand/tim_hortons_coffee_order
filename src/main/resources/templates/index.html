@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Tim Hortons</title>
+
+    <link rel="stylesheet" th:href="@{/css/timhortons.css}">
 </head>
 <body>
 
-<h1>Welcome to Tim Hortons!</h1>
+<div class="image">
+    <img th:src="@{/images/logo-en.jpg}">
+</div>
+
+<header>
+    <h1>Welcome to Tim Hortons!</h1>
+</header>
 
 <form method="post" th:action="@{/getOrder}" th:object="${order}">
 
-    <input type="number" th:name="quantity" th:field="*{quantity}" style="width:50px">
+    <input type="number" th:name="quantity" th:field="*{quantity}" min="0">
 
     <select th:field="*{size}">
         <option th:each="s:*{sizes}" th:value="${s}" th:text="${s}"></option>
