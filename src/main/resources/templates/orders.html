@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Coffee Order</title>
+    <link rel="stylesheet" th:href="@{/css/timhortons.css}">
+</head>
+<body>
+
+<header>
+    <h1>Your order:</h1>
+</header>
+
+<section class="coffee">
+    <span th:each="o:${oList}">
+        <th:block th:if="${o.size == 'Small'}">
+            <img th:src="@{/images/cup.jpg}" width="5%">
+        </th:block>
+
+        <th:block th:if="${o.size == 'Medium'}">
+            <img th:src="@{/images/cup.jpg}" width="10%">
+        </th:block>
+
+        <th:block th:if="${o.size == 'Large'}">
+            <img th:src="@{/images/cup.jpg}" width="15%">
+        </th:block>
+    </span>
+
+    <span th:each="o:${oList}">
+        <th:block th:if="${o.coffeeType == 'double'}">
+            <img th:src="@{/images/plus.jpg}">
+            <img th:src="@{/images/sugar.jpg}">
+            <img th:src="@{/images/sugar.jpg}">
+            <img th:src="@{/images/plus.jpg}">
+            <img th:src="@{/images/cream.jpg}">
+            <img th:src="@{/images/cream.jpg}">
+        </th:block>
+
+        <th:block th:if="${o.coffeeType == 'triple'}">
+            <img th:src="@{/images/plus.jpg}">
+            <img th:src="@{/images/sugar.jpg}">
+            <img th:src="@{/images/sugar.jpg}">
+            <img th:src="@{/images/sugar.jpg}">
+            <img th:src="@{/images/plus.jpg}">
+            <img th:src="@{/images/cream.jpg}">
+            <img th:src="@{/images/cream.jpg}">
+            <img th:src="@{/images/cream.jpg}">
+        </th:block>
+
+        <th:block th:if="${o.coffeeType == 'black1Sugar'}">
+            <img th:src="@{/images/plus.jpg}">
+            <img th:src="@{/images/sugar.jpg}">
+        </th:block>
+
+        <th:block th:if="${o.coffeeType == 'black2Sugar'}">
+            <img th:src="@{/images/plus.jpg}">
+            <img th:src="@{/images/sugar.jpg}">
+            <img th:src="@{/images/sugar.jpg}">
+        </th:block>
+
+        <th:block th:if="${o.coffeeType == 'black3Sugar'}">
+            <img th:src="@{/images/plus.jpg}">
+            <img th:src="@{/images/sugar.jpg}">
+            <img th:src="@{/images/sugar.jpg}">
+            <img th:src="@{/images/sugar.jpg}">
+        </th:block>
+    </span>
+</section>
+
+</body>
+</html>
