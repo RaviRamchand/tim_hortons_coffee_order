@@ -1,7 +1,6 @@
 package ca.sheridan.ramchrav.controllers;
 
 import ca.sheridan.ramchrav.beans.Orders;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +16,7 @@ public class MainController {
 
     @GetMapping("/")
     public String getIndex(Model model){
+        oList.clear();
         model.addAttribute("order", new Orders());
         return "index";
     }
@@ -25,8 +25,7 @@ public class MainController {
     public String getOrder(Model model, @ModelAttribute Orders orders){
         oList.add(orders);
         model.addAttribute("oList", oList);
-        //model.addAttribute("order", orders);
+        model.addAttribute("order", orders);
         return "orders";
     }
-
 }
