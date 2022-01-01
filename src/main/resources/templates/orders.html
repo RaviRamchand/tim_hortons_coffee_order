@@ -11,8 +11,9 @@
     <h1>Your order:</h1>
 </header>
 
-<section class="coffee">
-    <span th:each="o:${oList}">
+<th:block th:each="i: ${#numbers.sequence(1,order.quantity)}">
+    <section class="coffee">
+        <span th:each="o:${oList}">
         <th:block th:if="${o.size == 'Small'}">
             <img th:src="@{/images/cup.jpg}" width="5%">
         </th:block>
@@ -26,7 +27,7 @@
         </th:block>
     </span>
 
-    <span th:each="o:${oList}">
+        <span th:each="o:${oList}">
         <th:block th:if="${o.coffeeType == 'double'}">
             <img th:src="@{/images/plus.jpg}">
             <img th:src="@{/images/sugar.jpg}">
@@ -65,7 +66,12 @@
             <img th:src="@{/images/sugar.jpg}">
         </th:block>
     </span>
-</section>
+    </section>
+</th:block>
+
+<a th:href="@{/}">
+    <button>Order Again</button>
+</a>
 
 </body>
 </html>
