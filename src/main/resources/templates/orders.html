@@ -14,21 +14,21 @@
 <th:block th:each="i: ${#numbers.sequence(1,order.quantity)}">
     <section class="coffee">
         <span th:each="o:${oList}">
-        <th:block th:if="${o.size == 'Small'}">
+        <th:block th:if="${o.size == 'Small'}" th:value="*{o.setCoffeeSizePrice(1.50)}">
             <img th:src="@{/images/cup.jpg}" width="5%">
         </th:block>
 
-        <th:block th:if="${o.size == 'Medium'}">
+        <th:block th:if="${o.size == 'Medium'}" th:value="*{o.setCoffeeSizePrice(1.75)}">
             <img th:src="@{/images/cup.jpg}" width="10%">
         </th:block>
 
-        <th:block th:if="${o.size == 'Large'}">
+        <th:block th:if="${o.size == 'Large'}" th:value="*{o.setCoffeeSizePrice(1.99)}">
             <img th:src="@{/images/cup.jpg}" width="15%">
         </th:block>
     </span>
 
         <span th:each="o:${oList}">
-        <th:block th:if="${o.coffeeType == 'double'}">
+        <th:block th:if="${o.coffeeType == 'double'}" th:value="*{o.setCoffeeTypePrice(1.00)}">
             <img th:src="@{/images/plus.jpg}">
             <img th:src="@{/images/sugar.jpg}">
             <img th:src="@{/images/sugar.jpg}">
@@ -37,7 +37,7 @@
             <img th:src="@{/images/cream.jpg}">
         </th:block>
 
-        <th:block th:if="${o.coffeeType == 'triple'}">
+        <th:block th:if="${o.coffeeType == 'triple'}" th:value="*{o.setCoffeeSizePrice(1.20)}">
             <img th:src="@{/images/plus.jpg}">
             <img th:src="@{/images/sugar.jpg}">
             <img th:src="@{/images/sugar.jpg}">
@@ -48,18 +48,18 @@
             <img th:src="@{/images/cream.jpg}">
         </th:block>
 
-        <th:block th:if="${o.coffeeType == 'black1Sugar'}">
+        <th:block th:if="${o.coffeeType == 'black1Sugar'}" th:value="*{o.setCoffeeTypePrice(.45)}">
             <img th:src="@{/images/plus.jpg}">
             <img th:src="@{/images/sugar.jpg}">
         </th:block>
 
-        <th:block th:if="${o.coffeeType == 'black2Sugar'}">
+        <th:block th:if="${o.coffeeType == 'black2Sugar'}" th:value="*{o.setCoffeeTypePrice(.50)}">
             <img th:src="@{/images/plus.jpg}">
             <img th:src="@{/images/sugar.jpg}">
             <img th:src="@{/images/sugar.jpg}">
         </th:block>
 
-        <th:block th:if="${o.coffeeType == 'black3Sugar'}">
+        <th:block th:if="${o.coffeeType == 'black3Sugar'}" th:value="*{o.setCoffeeTypePrice(.60)}">
             <img th:src="@{/images/plus.jpg}">
             <img th:src="@{/images/sugar.jpg}">
             <img th:src="@{/images/sugar.jpg}">
@@ -68,6 +68,10 @@
     </span>
     </section>
 </th:block>
+
+Cost: $<span th:text="${order.getCoffeeTypePrice()} + ${order.getCoffeeSizePrice()}"></span> x
+<span th:text="${order.quantity}"></span> =
+$<span th:text="${order.getCoffeeTypePrice()} + ${order.getCoffeeSizePrice()} * ${order.quantity}"></span>
 
 <a th:href="@{/}">
     <button>Order Again</button>

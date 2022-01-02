@@ -13,6 +13,8 @@ public class Orders implements Serializable {
     private int quantity;
     private String size;
     private String coffeeType;
+    private double coffeeSizePrice;
+    private double coffeeTypePrice;
 
     private String[] sizes = {"Small", "Medium", "Large"};
 }
